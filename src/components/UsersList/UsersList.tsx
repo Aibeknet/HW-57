@@ -1,11 +1,11 @@
-import React from 'react';
-import UserItem from '../UserItem/UserItem.tsx';
-import { User } from '../../type';
+import React from "react";
+import UserItem from "../UserItem/UserItem.tsx";
+import { User } from "../../type";
 
 interface UsersListProps {
   users: User[];
 }
-const UsersList: React.FC<UsersListProps> = ({users}) => {
+const UsersList: React.FC<UsersListProps> = ({ users }) => {
   return (
     <ul className="list-group">
       {users.map((user) => (

@@ -1,24 +1,30 @@
-import { useState } from 'react';
-import { User} from '../../type.ts';
+import { useState } from "react";
+import { User } from "../../type.ts";
 
-const UserForm = ({addUser}: {addUser:(user: User) => void}) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+interface UserFormProps {
+  addUser: (user: User) => void;
+}
+
+const UserForm: React.FC<UserFormProps> = ({ addUser }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [active, setActive] = useState(false);
-  const [role, setRole] = useState('user');
+  const [role, setRole] = useState("user");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addUser({name, email, active, role});
-    setName('');
-    setEmail('');
+    addUser({ name, email, active, role });
+    setName("");
+    setEmail("");
     setActive(false);
-    setRole('user');
+    setRole("user");
   };
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-3">
-        <label htmlFor="name" className="form-label">Name:</label>
+        <label htmlFor="name" className="form-label">
+          Name:
+        </label>
         <input
           type="text"
           id="name"
@@ -30,7 +36,9 @@ const UserForm = ({addUser}: {addUser:(user: User) => void}) => {
       </div>
 
       <div className="mb-3">
-        <label htmlFor="email" className="form-label">Email:</label>
+        <label htmlFor="email" className="form-label">
+          Email:
+        </label>
         <input
           type="email"
           id="email"
@@ -50,11 +58,15 @@ const UserForm = ({addUser}: {addUser:(user: User) => void}) => {
           required
           className="form-check-input"
         />
-        <label htmlFor="active" className="form-check-label">Active</label>
+        <label htmlFor="active" className="form-check-label">
+          Active
+        </label>
       </div>
 
       <div className="mb-3">
-        <label htmlFor="role" className="form-label">Role</label>
+        <label htmlFor="role" className="form-label">
+          Role:
+        </label>
         <select
           id="role"
           value={role}
@@ -67,7 +79,9 @@ const UserForm = ({addUser}: {addUser:(user: User) => void}) => {
         </select>
       </div>
 
-      <button type="submit" className="btn btn-primary">Add User</button>
+      <button type="submit" className="btn btn-primary">
+        Add User
+      </button>
     </form>
   );
 };
